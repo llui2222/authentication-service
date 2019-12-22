@@ -1,0 +1,19 @@
+version: "3"
+services:
+  authentication-service:
+    image: $RELEASE_IMAGE
+    environment:
+      SERVER_PORT: 9000
+      DEPLOY_HOST: authentication-service
+      EUREKA_SERVER_LIST: http://eureka-peer-1:8761/eureka/,http://eureka-peer-2:8761/eureka/
+    ports:
+      - 9000
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - tpam
+networks:
+  tpam:
+    external: true

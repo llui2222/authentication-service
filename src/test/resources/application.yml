@@ -1,0 +1,5 @@
+security:
+  jwt:
+    signature-algorithm: HS512
+    signature-key: dummy
+    expiration: 1
